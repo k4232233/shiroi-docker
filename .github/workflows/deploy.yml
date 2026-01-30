@@ -188,10 +188,10 @@ jobs:
 
           # Transfer compose files and configs
           echo "Transferring compose files..."
-          rsync -avz -e 'ssh -i ~/.ssh/id_rsa -p ${{ secrets.PORT || 22 }}' docker-compose.yml deploy-zero-downtime.sh first-time-deploy.sh sync-configs.sh shiroi.env.example compose.env.example ${{ secrets.USER }}@${{ secrets.HOST }}:/home/${{ secrets.USER }}/shiroi/deploy/
+          rsync -avz -e 'ssh -i ~/.ssh/id_rsa -p ${{ secrets.PORT || 22 }}' docker-compose.yml deploy-zero-downtime.sh first-time-deploy.sh sync-configs.sh shiroi.env.example compose.env.example ${{ secrets.USER }}@${{ secrets.HOST }}:~/shiroi/deploy/
 
           echo "Transferring nginx directory..."
-          rsync -avz -e 'ssh -i ~/.ssh/id_rsa -p ${{ secrets.PORT || 22 }}' nginx/ ${{ secrets.USER }}@${{ secrets.HOST }}:/home/${{ secrets.USER }}/shiroi/deploy/nginx/
+          rsync -avz -e 'ssh -i ~/.ssh/id_rsa -p ${{ secrets.PORT || 22 }}' nginx/ ${{ secrets.USER }}@${{ secrets.HOST }}:~/shiroi/deploy/nginx/
 
           if [ $? -eq 0 ]; then
             echo "File transfer completed successfully"
