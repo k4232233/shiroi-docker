@@ -241,7 +241,7 @@ jobs:
 
             # 验证镜像标签
             echo "Verifying loaded image tags..."
-            docker images $IMAGE_NAME --format "table {{.Tag}}\t{{.CreatedAt}}" | grep -E "(latest|$SHA_SHORT|$DATE_TAG)"
+            docker images $IMAGE_NAME --format "table {{.Tag}}\t{{.CreatedAt}}" | grep -E "(latest|$SHA_SHORT|$DATE_TAG)" || true
 
             # 切换到部署目录
             cd $HOME/shiroi/deploy
@@ -300,7 +300,7 @@ jobs:
 
             # 显示保留的镜像版本
             echo "Retained image versions for rollback:"
-            docker images $IMAGE_NAME --format "table {{.Tag}}\t{{.CreatedAt}}" | grep -E "(latest|^[a-f0-9]{7}$|^[0-9]{8}_[0-9]{4}$)" | head -$((KEEP_VERSIONS * 2 + 1))
+            docker images $IMAGE_NAME --format "table {{.Tag}}\t{{.CreatedAt}}" | grep -E "(latest|^[a-f0-9]{7}$|^[0-9]{8}_[0-9]{4}$)" | head -$((KEEP_VERSIONS * 2 + 1)) || true
 
 
             # 最终状态检查
