@@ -2,11 +2,10 @@
 
 这是一个利用 GitHub Action 构建 Shiroi Docker 镜像并部署到远程服务器的工作流。
 
-## Why?
-
-Shiroi 是 [Shiro](https://github.com/Innei/Shiro) 的闭源开发版本。
-
-开源版本提供了预构建的 Docker 镜像或者编译产物可直接使用，但是闭源版本并没有提供。
+## Why
+Shiroi 是闭源项目，所以不能直接提供预构建镜像。
+所以使用本地构建 Docker 镜像，推送到镜像仓库，在服务器拉取镜像后部署。  
+该流程不符合 CI/CD 流程。  
 
 因为 Next.js build 需要大量内存，很多服务器并吃不消这样的开销。
 
@@ -17,8 +16,6 @@ Shiroi 是 [Shiro](https://github.com/Innei/Shiro) 的闭源开发版本。
 ## How to
 
 开始之前，你的服务器首先需要安装 Docker。
-
-Fork 此项目，然后你需要填写下面的信息。
 
 ## 服务器准备
 
